@@ -243,6 +243,6 @@ bt {
 
 .gravatar {
 	height: 175px;
-	border: 10px solid #eee;
+	border: 10px solid #D3D3D3;
 	transition: all 0.2s ease-in-out;
 }
