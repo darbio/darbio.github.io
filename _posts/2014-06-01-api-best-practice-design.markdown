@@ -108,7 +108,7 @@ These 2 scenarios are unlikely in ICON, where we have access to HTTP Headers and
 ### Pagination
 Pagination should not be part of an envelope. The correct way to include pagination details today is using the [Link header introduced by RFC 5988](http://tools.ietf.org/html/rfc5988#page-6). For example:
 
-`Link: <https://api.icon.rfs.nsw.gov.au/users?page=3&per_page=100>; rel="next", <https://api.icon.rfs.nsw.gov.au/users?page=50&per_page=100>; rel="last"`
+`Link: <https://api.contoso.com/users?page=3&per_page=100>; rel="next", <https://api.contoso.com/users?page=50&per_page=100>; rel="last"`
 
 But this isn't a complete solution as many APIs do like to return the additional pagination information, like a count of the total number of available results. An API that requires sending a count can use a custom HTTP header like `X-Total-Count`.
 
