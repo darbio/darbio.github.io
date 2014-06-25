@@ -103,7 +103,7 @@ Don't use an envelope by default, but make it possible when needed. We can futur
 
 There are 2 situations where an envelope is really needed - if the API needs to support cross domain requests over JSONP or if the client is incapable of working with HTTP headers.
 
-These 2 scenarios are unlikely in ICON, where we have access to HTTP Headers and will likely not use JSONP.
+These 2 scenarios are unlikely when we have access to HTTP Headers and will likely not use JSONP.
 
 ### Pagination
 Pagination should not be part of an envelope. The correct way to include pagination details today is using the [Link header introduced by RFC 5988](http://tools.ietf.org/html/rfc5988#page-6). For example:
