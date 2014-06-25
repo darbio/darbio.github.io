@@ -4,8 +4,8 @@ email: james@darb.io
 description: "The website of James Darbyshire, a web developer and senior entperise software 'architect' from Sydney, Australia."
 baseurl: ""
 url: "http://darb.io"
-#paginate: 10
-paginate_path: "blog/page:num"
+#paginate: 5
+#paginate_path: "blog/page:num"
 highlighter: pygments
 
 # Build settings
