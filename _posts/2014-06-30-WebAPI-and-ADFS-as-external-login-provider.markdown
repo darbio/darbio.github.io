@@ -35,6 +35,8 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 6. Repeat steps 13 to 17 for each claim type you would like to send to the relying party (e.g. Given name and Surname).
 7. Close the relying party dialog by clicking 'OK'.
 
+**N.B.** For WebAPI to work out of teh box, you will need to add a 'Name' claim type for the user.
+
 ## Registering an OAuth client in ADFS
 
 1. Open up powershell as an administrator.
