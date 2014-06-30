@@ -38,10 +38,10 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 ## Registering an OAuth client in ADFS
 
 1. Open up powershell as an administrator.
-2. Type `Add-ADFSClient -Name "{{application-name}}" -ClientId "{{client-id}}" -RedirectUri "{{redirect-uri}}"`
-    * {{application-name}} is the name of your application.
-    * {{client-id}} is a unique identifier for your client (e.g. a GUID).
-    * {{redirect-uri}} is the url to redirect to after authorization
+2. Type `Add-ADFSClient -Name "{application-name}" -ClientId "{client-id}" -RedirectUri "{redirect-uri}"`
+    * {application-name} is the name of your application.
+    * {client-id} is a unique identifier for your client (e.g. a GUID).
+    * {redirect-uri} is the url to redirect to after authorization
 
 ## Adding ADFS as a authentication provider in Web API
 
@@ -49,10 +49,11 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 
     app.UseWsFederationAuthentication(new WsFederationAuthenticationOptions()
     {
-        Wtrealm = "{{application-uri}}",
-        MetadataAddress = "https://{{adfs-uri}}/federationmetadata/2007-06/federationmetadata.xml",
+        Wtrealm = "{application-uri}",
+        MetadataAddress = "https://{adfs-uri}/federationmetadata/2007-06/federationmetadata.xml",
         Description = new Microsoft.Owin.Security.AuthenticationDescription()
         {
-            Caption = "{{authentication-provider-name}}"
+            AuthenticationType = "Federation",
+            Caption = "{authentication-provider-name}"
         }
     });
