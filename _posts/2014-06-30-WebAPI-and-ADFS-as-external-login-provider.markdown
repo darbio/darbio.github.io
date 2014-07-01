@@ -13,13 +13,16 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 ## Setting up the Relying Party Trust
 
 1. Open ADFS Managememt
-2. Expand 'Trust Relationships' and click on 'Relying Party Trusts'. ![http://i.imgur.com/HeGm5yl.png](http://i.imgur.com/HeGm5yl.png)
-3. Click on 'Add Relying Party Trust' in the right hand panel. ![http://i.imgur.com/o22tVfW.png](http://i.imgur.com/o22tVfW.png)
+2. Expand 'Trust Relationships' and click on 'Relying Party Trusts'.
+![http://i.imgur.com/HeGm5yl.png](http://i.imgur.com/HeGm5yl.png)
+3. Click on 'Add Relying Party Trust' in the right hand panel.
+![http://i.imgur.com/o22tVfW.png](http://i.imgur.com/o22tVfW.png)
 4. Click 'Start' and on the next page select 'Enter data about the relying party manually' before clicking 'Next'.
 5. Enter a display name for the relying party (e.g. the name of the application) and click 'Next'.
 6. Ensure the 'AD FS profile' is selected and click 'Next'.
 7. Ignore the optional token encryption certificate, and click 'Next'.
-8. On the next page leave the 2 check boxes for WS-Federation and SAML 2.0 unchecked. Click 'Next'.
+8. On the next page check the box for WS-Federation, and enter your WS-Federation endpoint. Click 'Next'.
+~[http://i.imgur.com/vYOB74r.png](http://i.imgur.com/vYOB74r.png)
 9. Add your identifier for the relying party. This is usually the web address for the application (e.g. https://app.example.com). Click 'Next'.
 10. Ensure 'I do not want to configure multi-factor authentication' is selected and click 'Next'.
 11. Ensure 'Permit all users to access this relying party' is checked and click 'Next'.
@@ -39,16 +42,21 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 
 ![http://i.imgur.com/vENaDlh.png](http://i.imgur.com/vENaDlh.png)
 
-## Registering an OAuth client in ADFS
-
-1. Open up powershell as an administrator.
-2. Type `Add-ADFSClient -Name "{application-name}" -ClientId "{client-id}" -RedirectUri "{redirect-uri}"`
-    * {application-name} is the name of your application.
-    * {client-id} is a unique identifier for your client (e.g. a GUID).
-    * {redirect-uri} is the url to redirect to after authorization
-
 ## Adding ADFS as a authentication provider in Web API
 
 1. Open your `Startup.Auth.cs` file and add the following:
+
+    // Add ADFS to our list
+    var adfsOptions = new WsFederationAuthenticationOptions()
+    {
+        Wtrealm = "{application-uri}",
+        MetadataAddress = "https://{adfs-server-uri}/federationmetadata/2007-06/federationmetadata.xml",
+        Caption = "ADFS for Darb.io",
+        AuthenticationType = "DARBIO.Federation",
+        AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Passive
+    };
+    app.UseWsFederationAuthentication(adfsOptions);
+
+## Linking up to Web API external login
 
 TODO
