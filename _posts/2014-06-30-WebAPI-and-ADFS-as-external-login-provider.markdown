@@ -58,16 +58,16 @@ For these steps, I presume that you are running ADFS 3 on Windows Server 2012 R2
 
 1. Open your `Startup.Auth.cs` file and add the following:
 
-    // Add ADFS to our list
-    var adfsOptions = new WsFederationAuthenticationOptions()
-    {
-        Wtrealm = "{application-uri}",
-        MetadataAddress = "https://{adfs-server-uri}/federationmetadata/2007-06/federationmetadata.xml",
-        Caption = "ADFS for Darb.io",
-        AuthenticationType = "DARBIO.Federation",
-        AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Passive
-    };
-    app.UseWsFederationAuthentication(adfsOptions);
+        // Add ADFS to our list
+        var adfsOptions = new WsFederationAuthenticationOptions()
+        {
+            Wtrealm = "{application-uri}",
+            MetadataAddress = "https://{adfs-server-uri}/federationmetadata/2007-06/federationmetadata.xml",
+            Caption = "ADFS for Darb.io",
+            AuthenticationType = "DARBIO.Federation",
+            AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Passive
+        };
+        app.UseWsFederationAuthentication(adfsOptions);
 
 ## Linking up to Web API external login
 
