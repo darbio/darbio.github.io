@@ -67,6 +67,8 @@ This will create a consumer which sends an email on incident created.
 
 Our SQS queue will now receive any messages which are published to the SNS topic `INCIDENT_CREATED`.
 
+N.B. I will leave it up to you to set up your queue for long polling, batching etc.
+
 ### Consumer application
 
 1. Create a new visual studio console application project called `EMAIL_ON_INCIDENT_CREATED`.
@@ -88,6 +90,8 @@ We will repeat the above process, except this time we will create a queue called
 3. Take note of the Queue URL. We will need this later.
 
 Our SQS queue will now receive any messages which are published to the SNS topic `INCIDENT_CREATED`.
+
+N.B. I will leave it up to you to set up your queue for long polling, batching etc.
 
 ### Consumer application
 
@@ -111,6 +115,8 @@ This will create a consumer which updates a cache on incident created or updated
 3. Take note of the Queue URL. We will need this later.
 
 Our SQS queue will now receive any messages which are published to the SNS topic `INCIDENT_CREATED`.
+
+N.B. I will leave it up to you to set up your queue for long polling, batching etc.
 
 ### Consumer application
 
