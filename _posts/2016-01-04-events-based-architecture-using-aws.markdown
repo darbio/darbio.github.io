@@ -30,11 +30,11 @@ Instead of wrapping these into a single application, we will put these consumers
 
 Consumers 1 and 2 are simple, and comprise of 1 topic, 1 queue and one consumer.
 
-![one-topic-one-queue](http://imgur.com/DwNcoXU)
+![one-topic-one-queue](http://i.imgur.com/DwNcoXU.png)
 
 Consumer 3 is a little more complex in that it comprises of 2 topics, 1 queue and one consumer.
 
-![two-topic-one-queue](http://imgur.com/bJLnbEM)
+![two-topic-one-queue](http://i.imgur.com/bJLnbEM.png)
 
 The source code for our examples can be found on my github account:
 
@@ -227,10 +227,10 @@ If you run this, you will be able to use the `Publish to topic` button in the SN
 
 In this example we have created an event based solution which allows the production of events to an SNS topic, and for multiple consumers to consume events from a producer.
 
-![aws-topics](http://imgur.com/HkPxUvY)
+![aws-topics](http://i.imgur.com/HkPxUvY.png)
 
-![aws-queues](http://imgur.com/3XCiCRT)
+![aws-queues](http://i.imgur.com/3XCiCRT.png)
 
-![final-state](http://imgur.com/iovbnG8)
+![final-state](http://i.imgur.com/iovbnG8.png)
 
-![applications](http://imgur.com/yberkNh)
+![applications](http://i.imgur.com/yberkNh.png)
