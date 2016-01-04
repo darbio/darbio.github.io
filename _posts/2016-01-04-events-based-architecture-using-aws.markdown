@@ -30,7 +30,7 @@ Instead of wrapping these into a single application, we will put these consumers
 
 Consumers 1 and 2 are simple, and comprise of 1 topic, 1 queue and one consumer.
 
-![one-topic-one-queue](http://i.imgur.com/DwNcoXU.png)
+![one-topic-one-queue](http://i.imgur.com/DwNcoXU.png =250)
 
 Consumer 3 is a little more complex in that it comprises of 2 topics, 1 queue and one consumer.
 
