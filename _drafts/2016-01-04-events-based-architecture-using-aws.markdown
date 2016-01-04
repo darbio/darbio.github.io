@@ -38,6 +38,9 @@ Consumer 3 is a little more complex in that it comprises of 2 topics, 1 queue an
 TODO
 ![]()
 
+The source code for our examples can be found on my github account:
+[https://github.com/darbio/aws-event-based-architecture](https://github.com/darbio/aws-event-based-architecture)
+
 # Producer
 
 ## SNS Topics
