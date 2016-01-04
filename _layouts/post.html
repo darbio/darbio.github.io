@@ -6,7 +6,10 @@ layout: default
     <div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2">
-				<p><bd class="pull-right">{{ post.date | date_to_long_string }}</bd><img src="http://www.gravatar.com/avatar/ce198ab23bedb46c953a2582e00cade3?s=50&d=mm" width="50px" height="50px" class="img-circle"> <ba>James Darbyshire</ba></p>
+				<p>
+					<img src="http://www.gravatar.com/avatar/ce198ab23bedb46c953a2582e00cade3?s=50&d=mm" width="50px" height="50px" class="img-circle">
+					<bd class="pull-right">{{ post.date | date_to_long_string }}</bd>&nbsp;<ba>James Darbyshire</ba>
+				</p>
 				<h1>{{ page.title }}</h1>
 				<article>
 					{{content}}
