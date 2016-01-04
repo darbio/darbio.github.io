@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-# Example event based architecture using AWS (SNS and SQS) and C#
+# Example event based architecture using AWS (SNS and SQS) and C&#35;
 
 ## Introduction
 
