@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Event-based architecture using AWS (SNS and SQS)"
-date: 2014-06-25 00:00
+date: 2016-01-04 00:00
 comments: true
 categories: 
 ---
