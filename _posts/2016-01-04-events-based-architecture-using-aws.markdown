@@ -6,8 +6,6 @@ comments: true
 categories: 
 ---
 
-# Example event based architecture using AWS (SNS and SQS) and C&#35;
-
 ## Introduction
 
 The following code is an example of an event based architecture using an SNS topic per event. It consists of:
