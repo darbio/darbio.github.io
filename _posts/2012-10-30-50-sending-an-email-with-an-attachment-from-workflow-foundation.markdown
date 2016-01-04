@@ -19,31 +19,29 @@ Use the .Net `MailMessage` class (`System.Net.Mail`) and a Code activity to send
 
 Non-SharePoint example:
 
-<pre><code class="language-csharp">
-
-// Set the variables
-string smtpAddress = "mail.example.com";
-string fromAddress = "from@example.com";
-
-// Create the SMTPClient
-var smtp = new SmtpClient(smtpAddress);
-smtp.Credentials = new NetworkCredential("username", "password"); 
-
-// Construct the MailMessage
-var mail = new MailMessage();
-mail.From = new MailAddress(fromAddress);
-mail.To.Add("to@example.com");
-mail.Subject = "Email subject here";
-mail.Body = "Body";
-
-// Attach the files
-mail.Attachments.Add(new Attachment("filename"));
-mail.Attachments.Add(new Attachment("filename"));
-
-// Send the MailMessage
-smtp.Send(mail);
-
-</code><pre>
+```
+    // Set the variables
+    string smtpAddress = "mail.example.com";
+    string fromAddress = "from@example.com";
+    
+    // Create the SMTPClient
+    var smtp = new SmtpClient(smtpAddress);
+    smtp.Credentials = new NetworkCredential("username", "password"); 
+    
+    // Construct the MailMessage
+    var mail = new MailMessage();
+    mail.From = new MailAddress(fromAddress);
+    mail.To.Add("to@example.com");
+    mail.Subject = "Email subject here";
+    mail.Body = "Body";
+    
+    // Attach the files
+    mail.Attachments.Add(new Attachment("filename"));
+    mail.Attachments.Add(new Attachment("filename"));
+    
+    // Send the MailMessage
+    smtp.Send(mail);
+```
 
 SharePoint example:
 
