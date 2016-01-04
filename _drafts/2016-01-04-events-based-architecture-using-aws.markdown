@@ -31,12 +31,12 @@ Instead of wrapping these into a single application, we will put these consumers
 Consumers 1 and 2 are simple, and comprise of 1 topic, 1 queue and one consumer.
 
 TODO
-![]()
+![one-topic-one-queue](http://imgur.com/DwNcoXU)
 
 Consumer 3 is a little more complex in that it comprises of 2 topics, 1 queue and one consumer.
 
 TODO
-![]()
+![two-topic-one-queue](http://imgur.com/bJLnbEM)
 
 The source code for our examples can be found on my github account:
 [https://github.com/darbio/aws-event-based-architecture](https://github.com/darbio/aws-event-based-architecture)
@@ -227,3 +227,11 @@ If you run this, you will be able to use the `Publish to topic` button in the SN
 # Wrap up
 
 In this example we have created an event based solution which allows the production of events to an SNS topic, and for multiple consumers to consume events from a producer.
+
+![aws-topics](http://imgur.com/HkPxUvY)
+
+![aws-queues](http://imgur.com/3XCiCRT)
+
+![final-state](http://imgur.com/iovbnG8)
+
+![applications](http://imgur.com/yberkNh)
