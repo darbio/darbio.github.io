@@ -19,7 +19,8 @@ Use the .Net `MailMessage` class (`System.Net.Mail`) and a Code activity to send
 
 Non-SharePoint example:
 
-~~~
+```
+
 // Set the variables
 string smtpAddress = "mail.example.com";
 string fromAddress = "from@example.com";
@@ -41,11 +42,13 @@ mail.Attachments.Add(new Attachment("filename"));
 
 // Send the MailMessage
 smtp.Send(mail);
-~~~
+
+```
 
 SharePoint example:
 
-~~~
+```
+
 using (var web = new SPSite("http://localhost").OpenWeb())
 {
     // Get the variables from SP
@@ -70,7 +73,8 @@ using (var web = new SPSite("http://localhost").OpenWeb())
     // Send the MailMessage
     smtp.Send(mail);
 }
-~~~
+
+```
 
 SharePoint Gotcha's
 ------------
