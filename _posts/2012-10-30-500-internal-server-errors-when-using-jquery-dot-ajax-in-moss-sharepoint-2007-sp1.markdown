@@ -5,6 +5,7 @@ date: 2012-02-24 23:22
 comments: true
 categories: 
 ---
+
 I have recently been architecting a SharePoint forms solution which uses jQuery.ajax To communicate, using JSON, with a .Net 2.0 web service - hosted in the `\_vti\_bin` / ISAPI folder of a SharePoint host.
 
 For various reasons we have been developing in SharePoint 2010, and it has worked fine in our dev environments. Today we did our first preliminary deployment of the solution into the client's development environment...
@@ -15,7 +16,7 @@ The application pages worked, however, we are using AJAX calls to communicate wi
 
 After some head scratching, numerous coffees and some less than savory exchanges we realized that the web service worked when we requested it using SOAP, but that when the content-type was set to JSON the server baulked and threw a not so helpful exception: 
 
-> "{"Message":"There was an error processing the request.","StackTrace":"","ExceptionType":""}"
+`"{"Message":"There was an error processing the request.","StackTrace":"","ExceptionType":""}"`
 
 ![""][1]
 
