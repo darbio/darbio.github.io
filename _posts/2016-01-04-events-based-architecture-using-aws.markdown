@@ -53,36 +53,7 @@ The source code for our examples can be found on my github account:
 2. Add a reference to the `AWSSDK.SimpleNotificationService` nuget package.
 3. We will create a simple producer which will publish messages to the SNS topics we created:
 
-```
-
-string INCIDENT_CREATED_ARN = "arn:aws:sns:ap-southeast-2:835265634988:INCIDENT_CREATED";
-string INCIDENT_UPDATED_ARN = "arn:aws:sns:ap-southeast-2:835265634988:INCIDENT_UPDATED";
-
-using (var client = new Amazon.SimpleNotificationService.AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.APSoutheast2))
-{
-    while (true)
-    {
-        Console.WriteLine("Press 1 to create a new incident, or 2 to update an existing incident.");
-        var key = Console.ReadKey();
-
-        if (key.KeyChar == '1')
-        {
-            Console.WriteLine("Creating incident.");
-            client.Publish(INCIDENT_CREATED_ARN, "Incident created.");
-        }
-        else if (key.KeyChar == '2')
-        {
-            Console.WriteLine("Updating incident");
-            client.Publish(INCIDENT_UPDATED_ARN, "Incident updated.");
-        }
-        else
-        {
-            Console.WriteLine("Unrecognised action.");
-        }
-    }
-}
-
-```
+<script src="https://gist.github.com/darbio/4cf5f22ec70dc5a793f3.js?file=Producer.cs"></script>
 
 # Consumers
 
@@ -104,33 +75,7 @@ Our SQS queue will now receive any messages which are published to the SNS topic
 2. Add a reference to the `AWSSDK.SQS` nuget package.
 3. We will create a simple consumer which will consume messages from the SQS queue we created:
 
-```
-
-string queueUrl = "YOUR_QUEUE_URL";
-using (var client = new Amazon.SQS.AmazonSQSClient(Amazon.RegionEndpoint.APSoutheast2))
-{
-    while (true)
-    {
-        // Get the messages
-        var response = client.ReceiveMessage(queueUrl);
-
-        // Check our response
-        if (response.Messages.Count > 0)
-        {
-            for (int i = 0; i < response.Messages.Count; i++)
-            {
-                // Send an email
-                Console.WriteLine("Sending email");
-
-                // Delete our message so that it doesn't get handled again
-                var receiptHandle = response.Messages[i].ReceiptHandle;
-                client.DeleteMessage(queueUrl, receiptHandle);
-            }
-        }
-    }
-}
-
-```
+<script src="https://gist.github.com/darbio/4cf5f22ec70dc5a793f3.js?file=Consumer1.cs"></script>
 
 If you run this, you will be able to use the `Publish to topic` button in the SNS console, or the producer application to send a message to the consumer.
 
@@ -152,33 +97,7 @@ Our SQS queue will now receive any messages which are published to the SNS topic
 2. Add a reference to the `AWSSDK.SQS` nuget package.
 3. We will create a simple consumer which will consume messages from the SQS queue we created:
 
-```
-
-string queueUrl = "YOUR_QUEUE_URL";
-using (var client = new Amazon.SQS.AmazonSQSClient(Amazon.RegionEndpoint.APSoutheast2))
-{
-    while (true)
-    {
-        // Get the messages
-        var response = client.ReceiveMessage(queueUrl);
-
-        // Check our response
-        if (response.Messages.Count > 0)
-        {
-            for (int i = 0; i < response.Messages.Count; i++)
-            {
-                // Send an email
-                Console.WriteLine("Sending SMS");
-
-                // Delete our message so that it doesn't get handled again
-                var receiptHandle = response.Messages[i].ReceiptHandle;
-                client.DeleteMessage(queueUrl, receiptHandle);
-            }
-        }
-    }
-}
-
-```
+<script src="https://gist.github.com/darbio/4cf5f22ec70dc5a793f3.js?file=Consumer2.cs"></script>
 
 If you run this, you will be able to use the `Publish to topic` button in the SNS console, or the producer application to send a message to the consumer.
 
@@ -201,33 +120,7 @@ Our SQS queue will now receive any messages which are published to the SNS topic
 2. Add a reference to the `AWSSDK.SQS` nuget package.
 3. We will create a simple consumer which will consume messages from the SQS queue we created:
 
-```
-
-string queueUrl = "YOUR_QUEUE_URL";
-using (var client = new Amazon.SQS.AmazonSQSClient(Amazon.RegionEndpoint.APSoutheast2))
-{
-    while (true)
-    {
-        // Get the messages
-        var response = client.ReceiveMessage(queueUrl);
-
-        // Check our response
-        if (response.Messages.Count > 0)
-        {
-            for (int i = 0; i < response.Messages.Count; i++)
-            {
-                // Send an email
-                Console.WriteLine("Updating Cache");
-
-                // Delete our message so that it doesn't get handled again
-                var receiptHandle = response.Messages[i].ReceiptHandle;
-                client.DeleteMessage(queueUrl, receiptHandle);
-            }
-        }
-    }
-}
-
-```
+<script src="https://gist.github.com/darbio/4cf5f22ec70dc5a793f3.js?file=Consumer3.cs"></script>
 
 If you run this, you will be able to use the `Publish to topic` button in the SNS console, or the producer application to send a message to the consumers. When you publish to `INCIDENT_CREATED` all consumers should receive the event. When you publish to `INCIDENT_UPDATED` only consumer 3 should receive the event.
 
