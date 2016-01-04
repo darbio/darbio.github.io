@@ -19,58 +19,11 @@ Use the .Net `MailMessage` class (`System.Net.Mail`) and a Code activity to send
 
 Non-SharePoint example:
 
-```
-    // Set the variables
-    string smtpAddress = "mail.example.com";
-    string fromAddress = "from@example.com";
-    
-    // Create the SMTPClient
-    var smtp = new SmtpClient(smtpAddress);
-    smtp.Credentials = new NetworkCredential("username", "password"); 
-    
-    // Construct the MailMessage
-    var mail = new MailMessage();
-    mail.From = new MailAddress(fromAddress);
-    mail.To.Add("to@example.com");
-    mail.Subject = "Email subject here";
-    mail.Body = "Body";
-    
-    // Attach the files
-    mail.Attachments.Add(new Attachment("filename"));
-    mail.Attachments.Add(new Attachment("filename"));
-    
-    // Send the MailMessage
-    smtp.Send(mail);
-```
+<script src="https://gist.github.com/darbio/1cdbf2700013e37e530e.js?file=normal.cs"></script>
 
 SharePoint example:
 
-```
-    using (var web = new SPSite("http://localhost").OpenWeb())
-    {
-        // Get the variables from SP
-        string smtpAddress = web.Site.WebApplication.OutboundMailServiceInstance.Server.Address;
-        string fromAddress = web.Site.WebApplication.OutboundMailSenderAddress;
-    
-        // Create the SMTPClient
-        var smtp = new SmtpClient(smtpAddress);
-        smtp.Credentials = CredentialCache.DefaultNetworkCredentials;
-    
-        // Construct the MailMessage
-        var mail = new MailMessage();
-        mail.From = new MailAddress(fromAddress);
-        mail.To.Add("to@example.com");
-        mail.Subject = "Email subject here";
-        mail.Body = "Body";
-    
-        // Attach the files
-        mail.Attachments.Add(new Attachment("filename"));
-        mail.Attachments.Add(new Attachment("filename"));
-    
-        // Send the MailMessage
-        smtp.Send(mail);
-    }
-```
+<script src="https://gist.github.com/darbio/1cdbf2700013e37e530e.js?file=sharepoint.cs"></script>
 
 SharePoint Gotcha's
 ------------
