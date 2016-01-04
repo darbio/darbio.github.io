@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Event-based architecture using AWS (SNS and SQS)"
+title: "Event-based architecture using AWS (SNS and SQS) and C#"
 date: 2016-01-04 00:00
 comments: true
 categories: 
 ---
 
-# Example event based architecture using AWS (SNS and SQS)
+# Example event based architecture using AWS (SNS and SQS) and C#
 
 ## Introduction
 
@@ -30,15 +30,14 @@ Instead of wrapping these into a single application, we will put these consumers
 
 Consumers 1 and 2 are simple, and comprise of 1 topic, 1 queue and one consumer.
 
-TODO
 ![one-topic-one-queue](http://imgur.com/DwNcoXU)
 
 Consumer 3 is a little more complex in that it comprises of 2 topics, 1 queue and one consumer.
 
-TODO
 ![two-topic-one-queue](http://imgur.com/bJLnbEM)
 
 The source code for our examples can be found on my github account:
+
 [https://github.com/darbio/aws-event-based-architecture](https://github.com/darbio/aws-event-based-architecture)
 
 # Producer
