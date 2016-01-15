@@ -8,7 +8,7 @@ categories:
 
 When debugging a WebAPI application recently which used an asynchronous library, I came accross a situation where the application kept on throwing the following `InvalidOperationException`:
 
-   There were not enough free threads in the ThreadPool to complete the operation.
+> There were not enough free threads in the ThreadPool to complete the operation.
 
 Running the following code from a WebAPI controller:
 
@@ -16,13 +16,13 @@ Running the following code from a WebAPI controller:
 
 Results in the following:
 
-    workers = 2
-    completions = 2
+> workers = 2
+> completions = 2
 
 This is too low to run any other `async` tasks. For example, when run in a console application, we are returned significantly higher numbers.
 
-    workers = 1023
-    completions = 1000
+> workers = 1023
+> completions = 1000
 
 After [posting a question on stack overflow](http://stackoverflow.com/questions/34780226/threadpools-in-iis-express/34802401#34802401), and doing some digging, I came accross the following github issue:
 
@@ -37,12 +37,18 @@ After [posting a question on stack overflow](http://stackoverflow.com/questions/
 > InvalidOperationException: There were not enough free threads in the ThreadPool to complete the operation.
 > In the meantime, manually calling ThreadPool.SetMaxThreads with higher values will do the trick.
 
-The fix is to add the following code to your `Startup` class:
+Specifically, the following comment explains the issue:
+
+> This is an issue with Helios specifically. WebEngine4 sets the limits to 2 * cpuCount and normally System.Web sets the limits to 1000 and 4096 (basically the autoConfig settings in web.config).
+
+The fix is to change the calculation method for how Helios calculates the max threadpool count. To do this yourself, add the following code to your `Startup` class:
 
 <script src="https://gist.github.com/darbio/fc784b22710c082c4b95.js?file=Fix.cs"></script>
     
-This will be the fix implemented in Helios by the ASP.Net team in the future.
+This will be the fix implemented in Helios by the ASP.Net team [in the future](https://github.com/aspnet/Home/issues/94#issuecomment-77884761).
 
 For now, I have set the `Startup` class in my WebAPI application to call this code on construction. The code is wrapped in conditional compilation symbols to ensure that the code is only run when the build configuration is `DEBUG`.
 
 <script src="https://gist.github.com/darbio/fc784b22710c082c4b95.js?file=Startup.cs"></script>
+
+Happy coding!
