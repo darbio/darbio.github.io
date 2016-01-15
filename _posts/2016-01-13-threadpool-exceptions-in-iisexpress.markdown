@@ -39,7 +39,7 @@ After [posting a question on stack overflow](http://stackoverflow.com/questions/
 > InvalidOperationException: There were not enough free threads in the ThreadPool to complete the operation.
 > In the meantime, manually calling ThreadPool.SetMaxThreads with higher values will do the trick.
 
-Specifically, the following comment explains the issue:
+Specifically, the [following comment](https://github.com/aspnet/Home/issues/94#issuecomment-48424228) explains the issue:
 
 > This is an issue with Helios specifically. WebEngine4 sets the limits to 2 * cpuCount and normally System.Web sets the limits to 1000 and 4096 (basically the autoConfig settings in web.config).
 
