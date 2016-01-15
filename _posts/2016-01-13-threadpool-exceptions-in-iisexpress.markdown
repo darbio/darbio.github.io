@@ -12,9 +12,7 @@ When debugging a WebAPI application recently which used an asynchronous library,
 
 Running the following code from a WebAPI controller:
 
-    int workers;
-    int completions;
-    System.Threading.ThreadPool.GetMaxThreads(out workers, out completions);
+<script src="https://gist.github.com/darbio/fc784b22710c082c4b95.js?file=Diagnosis.cs"></script>
 
 Results in the following:
 
@@ -41,29 +39,10 @@ After [posting a question on stack overflow](http://stackoverflow.com/questions/
 
 The fix is to add the following code to your `Startup` class:
 
-    // When webengine4.dll first starts, it sets the max thread pool size to an artificially low number, and it depends 
-    // on System.Web.dll to set it back. Since we're replacing System.Web.dll, we need to perform this fixup manually. 
-    // For now we'll use 100 * numCPUs. 
-    int newLimits = 100 * Environment.ProcessorCount; // this is actually # cores (including hyperthreaded cores) 
-    int existingMaxWorkerThreads; 
-    int existingMaxIocpThreads; 
-    ThreadPool.GetMaxThreads(out existingMaxWorkerThreads, out existingMaxIocpThreads); 
-    ThreadPool.SetMaxThreads(Math.Max(newLimits, existingMaxWorkerThreads), Math.Max(newLimits, existingMaxIocpThreads));
+<script src="https://gist.github.com/darbio/fc784b22710c082c4b95.js?file=Fix.cs"></script>
     
 This will be the fix implemented in Helios by the ASP.Net team in the future.
 
 For now, I have set the `Startup` class in my WebAPI application to call this code on construction. The code is wrapped in conditional compilation symbols to ensure that the code is only run when the build configuration is `DEBUG`.
 
-        public Startup()
-        {
-    #if DEBUG
-            // HACK
-            // Set worker threads as HElios sets them too low for IIS Express
-            // https://github.com/aspnet/Home/issues/94
-            int newLimits = 100 * Environment.ProcessorCount; // this is actually # cores (including hyperthreaded cores) 
-            int existingMaxWorkerThreads;
-            int existingMaxIocpThreads;
-            System.Threading.ThreadPool.GetMaxThreads(out existingMaxWorkerThreads, out existingMaxIocpThreads);
-            System.Threading.ThreadPool.SetMaxThreads(Math.Max(newLimits, existingMaxWorkerThreads), Math.Max(newLimits, existingMaxIocpThreads));
-    #endif
-        }
+<script src="https://gist.github.com/darbio/fc784b22710c082c4b95.js?file=Startup.cs"></script>
