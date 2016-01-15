@@ -17,11 +17,13 @@ Running the following code from a WebAPI controller:
 Results in the following:
 
 > workers = 2
+> 
 > completions = 2
 
 This is too low to run any other `async` tasks. For example, when run in a console application, we are returned significantly higher numbers.
 
 > workers = 1023
+> 
 > completions = 1000
 
 After [posting a question on stack overflow](http://stackoverflow.com/questions/34780226/threadpools-in-iis-express/34802401#34802401), and doing some digging, I came accross the following github issue:
