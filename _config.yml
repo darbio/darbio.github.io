@@ -1,7 +1,7 @@
 # Site settings
 title: "darb.io - "
 email: james@darb.io
-description: "The website of James Darbyshire, a web developer and senior entperise software 'architect' from Sydney, Australia."
+description: "The website of James Darbyshire, a web developer and senior enterprise software 'architect' from Sydney, Australia."
 baseurl: ""
 url: "http://darb.io"
 #paginate: 5
