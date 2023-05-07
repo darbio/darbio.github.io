@@ -2,7 +2,7 @@
 layout: post
 title: "SwiftUI binding in UIKit with UIHostingController and ObservableObject"
 date: 2023-05-07 00:00
-comments: true
+comments: false
 categories: swiftui swift uikit ios
 ---
 
