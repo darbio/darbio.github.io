@@ -58,7 +58,7 @@ NB: I batched the uploads into child directories to help manage the upload, with
 
 The Mac activity monitor told me that I was uploading at 2.5 megabytes per second.
 
-![Mac activity monitor](https://github.com/darbio/darbio.github.io/blob/c69a86e7c25e64ea0d76c4b9edb937683069a4e6/_posts/mac_performance_screenshot.png)
+![Mac activity monitor](https://darb.io/assets/posts/mac_performance_screenshot.png)
 
 Overall, it took around 12 hours to upload the full dataset to S3, which isn't too bad given the amount of data.
 
