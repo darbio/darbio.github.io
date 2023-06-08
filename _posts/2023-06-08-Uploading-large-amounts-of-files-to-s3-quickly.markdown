@@ -66,4 +66,6 @@ Overall, it took around 12 hours to upload the full dataset to S3, which isn't t
 
 I'm still waiting for AWS to catch up, but it's going to be a costly (well, for AWS) exercise with the estimate being around $30 USD to perform 5 million `PUT` requests. I'll post a snapshot when AWS has caught up.
 
+$0.0055 per 1,000 PUT request = `(5,000,000 / 1,000) * 0.0055 = $27.50 USD` 
+
 Hope this helps!
